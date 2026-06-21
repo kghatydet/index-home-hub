@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ayx · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f9fb;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+            color: #1d2a3a;
+            line-height: 1.75;
+            padding: 2.5rem 1.25rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-container {
+            max-width: 640px;
+            width: 100%;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.2rem;
+            color: #0b1a2c;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #5a6b7e;
+            margin-bottom: 2.4rem;
+            font-weight: 380;
+            border-bottom: 1px solid #dde2e9;
+            padding-bottom: 0.75rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            margin-top: 2.8rem;
+            margin-bottom: 0.9rem;
+            color: #1d2a3a;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #2a3b4f;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2e3f53;
+        }
+
+        a {
+            color: #1e6f9f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #0a4b73;
+            text-decoration: underline;
+        }
+
+        .highlight-capsule {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 0.15rem 0.8rem;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 450;
+            color: #1e5a7a;
+            letter-spacing: 0.02em;
+            margin-right: 0.3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.8rem;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e6eaef;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 550;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            color: #0b1a2c;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #4b5f74;
+            line-height: 1.5;
+        }
+
+        .card-scenario {
+            background: #ffffff;
+            padding: 1.5rem 1.8rem;
+            border-radius: 10px;
+            margin: 2rem 0 0.8rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .card-scenario p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-block {
+            margin: 2.4rem 0 1.6rem;
+            border-top: 1px solid #dde2e9;
+            padding-top: 1.4rem;
+        }
+
+        .faq-block details {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-block summary {
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.98rem;
+            color: #1d2a3a;
+            padding: 0.2rem 0;
+        }
+
+        .faq-block details p {
+            margin: 0.6rem 0 0.2rem 0.4rem;
+            font-size: 0.95rem;
+            color: #3e566c;
+        }
+
+        .footnote {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #7a8b9e;
+            border-top: 1px solid #dde2e9;
+            padding-top: 1.2rem;
+        }
+
+        .footnote a {
+            color: #5b7085;
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.8rem 1.2rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card-scenario {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+
+        <h1>ayx · 稳定入口与页面说明</h1>
+        <div class="subhead">产品摘要 · 指向一个可靠的访问起点</div>
+
+        <p>
+            在频繁迭代的网络环境中，一个长期可定位的地址能减少检索成本。项目 <a href="https://index-home-ayx.com">ayx</a> 正是基于此思路构建：它并非功能庞杂的平台，而是作为集中式的页面说明与稳定入口，帮助使用者快速确认当前可访问的状态与基础路径。我们围绕“少跳转、低歧义”做设计，让索引页本身成为最直接的锚点。
+        </p>
+
+        <h2>设计亮点</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>定位优先</strong>
+                <span>每一版内容均以页面说明为主线，避免无关信息干扰。入口仅保留必要链接与释义，降低认知负担。</span>
+            </div>
+            <div class="feature-item">
+                <strong>持续可访问</strong>
+                <span>通过稳定的域名与简洁的结构，减少因地址变动带来的查找成本。适配不同设备的基础浏览。</span>
+            </div>
+            <div class="feature-item">
+                <strong>克制的信息量</strong>
+                <span>不堆砌功能列表，而是提供核心说明与指向。适合需要快速确认站点状态的用户。</span>
+            </div>
+            <div class="feature-item">
+                <strong>静态轻量</strong>
+                <span>基于纯前端页面，无复杂依赖。页面加载快，内容呈现直接，适合作为长期参考页。</span>
+            </div>
+        </div>
+
+        <h2>使用建议</h2>
+        <p>
+            若你初次接触该索引页，建议先完整浏览页面说明部分，了解其定位与边界。日常使用时，可将 <a href="https://index-home-ayx.com">ayx</a> 加入浏览器书签栏，作为快速访问的固定入口。当遇到访问异常或需要核对当前可用路径时，优先回到此页确认说明内容。另外，页面本身不涉及用户数据收集，也无需注册或登录，打开即阅。
+        </p>
+
+        <div class="card-scenario">
+            <h3 style="margin-top:0;">典型场景</h3>
+            <p>
+                团队内部需要向成员提供一个长期不变的项目索引页，避免每次更新都重新分发链接；或者个人维护的多个资源站点需要一个统一的“门牌页”，以文字说明而非跳转聚合的方式呈现。这时，<a href="https://index-home-ayx.com">ayx</a> 的简洁结构可以直接复用或作为参照。
+            </p>
+            <p>
+                另外，如果你正在撰写文档或知识库，并希望给读者一个稳定、描述清晰的参考地址，该入口页也适合直接引用——它的内容变化频率低，且始终围绕页面说明展开。
+            </p>
+        </div>
+
+        <h2>访问说明与提示</h2>
+        <p>
+            页面托管于 GitHub Pages，基础访问不受地域限制。由于是静态站点，你无须担心后端服务中断导致的访问失败。但请注意：项目本身不提供代理、加速或内容转发功能，仅作为信息展示与入口索引。任何涉及具体服务可用性的情况，请以实际网络环境与页面内容为准。
+        </p>
+        <p>
+            若在访问时遇到页面加载异常，可尝试清除浏览器缓存或使用其他网络环境重试。如果问题持续，可通过项目仓库提交反馈——不过当前页面暂不包含反馈表单，因此建议将问题描述与截图保存，后续参考。
+        </p>
+
+        <div class="faq-block">
+            <h2 style="margin-top:0;">FAQ 摘要</h2>
+            <details>
+                <summary>这个页面会频繁修改内容吗？</summary>
+                <p>不会。页面以稳定性为首要考虑，仅在需要更新说明或调整入口结构时做有限修改，且会尽量保持已有链接与段落逻辑不变。</p>
+            </details>
+            <details>
+                <summary>我可以直接引用这个页面作为我的项目首页吗？</summary>
+                <p>可以借鉴其结构与说明风格，但建议根据自身项目调整标题、描述与链接。直接复制可能造成混淆，因为该页面的内容专属于 <a href="https://index-home-ayx.com">ayx</a> 的定位。</p>
+            </details>
+            <details>
+                <summary>链接打开后显示空白或异常怎么办？</summary>
+                <p>首先确认网络连接是否正常；其次检查浏览器是否启用了可能拦截静态页面的扩展。如果域名解析正常，通常可以秒开。仍无法访问时，可稍后重试。</p>
+            </details>
+        </div>
+
+        <div class="footnote">
+            <p>页面说明 · 稳定入口 · 参考文档：<a href="https://index-home-ayx.com">ayx</a> 。内容基于实际项目状态编写，不构成任何服务承诺。如有疑问，请以页面自身描述为准。</p>
+        </div>
+
+    </div>
+</body>
+</html>
