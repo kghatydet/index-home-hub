@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>稳定入口 · 彩票网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f7f9;
+            color: #1e1f2a;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ——— 深色头图 ——— */
+        .hero {
+            background: linear-gradient(145deg, #1f2336 0%, #2d3146 100%);
+            color: #eff1f5;
+            padding: 3.8rem 1.5rem 3.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: #f6f7f9;
+            border-radius: 30px 30px 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #bcc2d4;
+            max-width: 540px;
+            margin: 0 auto 0.4rem;
+            font-weight: 300;
+        }
+
+        .hero .action-tip {
+            margin-top: 1.6rem;
+            font-size: 0.95rem;
+            color: #d6dbe9;
+        }
+
+        .hero .action-tip a {
+            color: #fbe38e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #fbe38e80;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .hero .action-tip a:hover {
+            color: #ffd966;
+            border-bottom-color: #ffd966;
+        }
+
+        /* ——— 浅色正文区 ——— */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 1.2rem 3rem;
+            flex: 1;
+        }
+
+        .intro-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2.2rem 2rem;
+            margin-top: -1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-card a {
+            color: #c45f2b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .intro-card a:hover {
+            color: #a84a1d;
+            border-bottom-color: #c45f2b;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.5rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .feature-item {
+            background: #f9fafc;
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            border-left: 5px solid #c45f2b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #1e1f2a;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1f2336;
+            margin-bottom: 0.2rem;
+        }
+
+        .closing {
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e5e8ef;
+            font-size: 0.97rem;
+            color: #3e4057;
+            font-style: normal;
+        }
+
+        .closing a {
+            color: #c45f2b;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #c45f2b40;
+        }
+
+        .closing a:hover {
+            color: #a84a1d;
+            border-bottom-color: #a84a1d;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin: 2.2rem 0 1.2rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            border: 1px solid #eef0f4;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1f2336;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.9rem;
+            border-bottom: 1px solid #f0f2f6;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #2d3146;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: '▸';
+            color: #c45f2b;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini .faq-answer {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+            color: #44475e;
+            font-size: 0.93rem;
+            line-height: 1.6;
+        }
+
+        .faq-mini .faq-answer a {
+            color: #c45f2b;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #c45f2b40;
+        }
+
+        .faq-mini .faq-answer a:hover {
+            border-bottom-color: #c45f2b;
+        }
+
+        /* ——— 响应式 ——— */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2.6rem 1rem 2.6rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .intro-card {
+                padding: 1.6rem 1.2rem;
+                margin-top: -1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+            .faq-mini {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        /* footer 留白 */
+        .foot-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8489a1;
+            padding: 1.2rem 1rem 2rem;
+            border-top: 1px solid #e6e8ef;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 · 开场短句 -->
+    <header class="hero">
+        <h1>一个熟悉的入口</h1>
+        <p class="sub">每天打开浏览器，总有一个地方让你觉得踏实。页面简洁、指向明确，不需要在纷乱的标签里来回寻找。</p>
+        <div class="action-tip">
+            如果你也偏爱这样的体验，不妨从 <a href="https://cns-ssl-lottery.com">彩票网</a> 开始。
+        </div>
+    </header>
+
+    <!-- 浅色正文区 -->
+    <div class="container">
+
+        <div class="intro-card">
+
+            <!-- 承接段落 -->
+            <p>
+                前些天朋友问起，平时看开奖信息、核对号码都去哪里。我说其实没有太多花哨的地方，一个稳定、能快速打开的页面就足够。对我而言，<a href="https://cns-ssl-lottery.com">彩票网</a> 就是这样一个落脚点——不绕路、不堆砌，打开之后该有的东西都在视线里。
+            </p>
+
+            <p>
+                很多网站喜欢把入口藏得很深，或者铺满弹窗和跳转。但这里不一样，首页结构直白，信息分区清晰，从开奖公告到历史数据，几步就能触达。哪怕隔了几天再登录，布局还是熟悉的，不需要重新适应。
+            </p>
+
+            <!-- 特点列表（卡片式） -->
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📌 一目了然</strong>
+                    首页直接展示最近开奖号码与期次，省去点击层层菜单的麻烦。
+                </div>
+                <div class="feature-item">
+                    <strong>⚙️ 数据稳定</strong>
+                    每次刷新内容加载迅速，很少遇到卡顿或白屏，查号体验顺滑。
+                </div>
+                <div class="feature-item">
+                    <strong>🔄 持续更新</strong>
+                    玩法规则、派奖公告、常见问题都保持同步，信息时效性有保障。
+                </div>
+                <div class="feature-item">
+                    <strong>🧭 入口清晰</strong>
+                    无论用手机还是电脑，主导航始终固定在顶部，切换频道不迷路。
+                </div>
+            </div>
+
+            <!-- 温和承接 + 场景提示 -->
+            <p>
+                有时候，我们需要的不是一个功能堆砌的平台，而是一个可以安静地对一下号码、扫一眼公告的地方。不用注册多余的账号，也不用在五颜六色的广告里找入口。我就是这样渐渐习惯把 <a href="https://cns-ssl-lottery.com">彩票网</a> 放在浏览器书签栏的第一排。
+            </p>
+
+            <!-- 温和结尾 + 自然嵌入链接 -->
+            <div class="closing">
+                说到底，选择什么网站终究是个人习惯。但如果你也在找一个干净、少干扰的站点，不妨记住这里：<a href="https://cns-ssl-lottery.com">彩票网</a>。页面就在那里，不用特意找，打开就是。
+            </div>
+        </div>
+
+        <!-- FAQ 摘要（自然呈现，不喧宾夺主） -->
+        <div class="faq-mini">
+            <h3>🔍 几个常见问题</h3>
+
+            <details>
+                <summary>日常查开奖号码，需要注册吗？</summary>
+                <div class="faq-answer">
+                    不需要。首页直接展示最新开奖数据，绝大多数信息无需登录即可浏览。只有部分历史查询或高级筛选会建议注册，但基础查看完全无障碍。
+                </div>
+            </details>
+
+            <details>
+                <summary>手机端显示完整吗？</summary>
+                <div class="faq-answer">
+                    页面采用响应式布局，在手机浏览器上会自动适配窄屏，导航折叠、按钮大小适中，查看开奖号码和公告都很方便。
+                </div>
+            </details>
+
+            <details>
+                <summary>如何快速回到首页？</summary>
+                <div class="faq-answer">
+                    不管在哪个页面，点击左上角 logo 或「<a href="https://cns-ssl-lottery.com">彩票网</a>」字样即可返回主站首页，避免层层后退的麻烦。
+                </div>
+            </details>
+        </div>
+
+        <!-- 额外的温和提示，保持页面完整 -->
+        <p style="font-size: 0.9rem; color: #5b5f78; margin-top: 0.6rem; text-align: center;">
+            * 页面内容仅供参考，具体规则以官方最新公告为准。
+        </p>
+
+    </div>
+
+    <footer class="foot-note">
+        — 记录一个日常入口 —
+    </footer>
+
+</body>
+</html>
